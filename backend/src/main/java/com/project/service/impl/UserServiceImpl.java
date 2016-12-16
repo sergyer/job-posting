@@ -5,6 +5,7 @@ import com.project.dto.UserDTO;
 import com.project.model.User;
 import com.project.repository.UserRepo;
 import com.project.service.UserService;
+import com.project.utils.CommonUtils;
 import org.dozer.Mapper;
 import org.hibernate.TransientObjectException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class UserServiceImpl implements UserService {
 
 
         if (userDto != null && emailIsFree(userDto)) {
+            String hashedPassword = CommonUtils.hashPassword(userDto.getPassword());
+            userDto.setPassword(hashedPassword);
             User userToBeSaved = dtoMapper.map(userDto, User.class);
 
 
@@ -109,5 +112,25 @@ public class UserServiceImpl implements UserService {
             return false;
 
 
+    }
+
+    @Override
+    public UserDTO loginUser(String email, String password) {
+        UserDTO entity = null;
+
+        String hashedPassword = CommonUtils.hashPassword(password);
+
+        try {
+            User userFromDB = userRepo.loginUser(email, hashedPassword);
+
+            if (userFromDB != null) {
+                entity = dtoMapper.map(userFromDB, UserDTO.class);
+                return entity;
+            }
+
+        } catch (Exception e) {
+            return null;
+        }
+        return entity;
     }
 }

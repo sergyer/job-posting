@@ -49,4 +49,16 @@ public class UserRepoImpl extends AbstractRepo implements UserRepo {
         User userFromDb = (User) query.uniqueResult();
         return userFromDb;
     }
+
+    @Override
+    public User loginUser(String email, String hashedPassword) {
+        User userFromDB = null;
+
+        Query query = session().createQuery("Select c from User c " + "Where c.email=:email and c.password=:password")
+                .setParameter("email", email)
+                .setParameter("password", hashedPassword);
+        userFromDB = (User) query.uniqueResult();
+
+        return userFromDB;
+    }
 }

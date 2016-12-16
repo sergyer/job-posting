@@ -28,6 +28,9 @@
                     <br/>
                     <p class="main_description">Search thousands of stores, brands, products and user classifieds all in one place</p>
                     <br/>
+
+                    <h:outputText rendered="#{sessionContext.user.firstName!=null}"
+                                  value="Hello #{sessionContext.user.firstName}"/>
                     <p:growl/>
 
                     <br/><br/>

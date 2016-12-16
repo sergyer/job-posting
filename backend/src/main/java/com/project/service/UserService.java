@@ -17,6 +17,9 @@ public interface UserService {
 
      UserDTO getUserById(Long id);
 
+     UserDTO loginUser(String email, String password);
+
+
 
 
 }
