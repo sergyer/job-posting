@@ -34,7 +34,7 @@ public class LoginBean {
 
         if (userDTO != null) {
             sessionContext.setUser(userDTO);
-            return "index";
+            return "profile";
         } else {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed", "Registration fail");
             FacesContext.getCurrentInstance().addMessage(null, msg);
