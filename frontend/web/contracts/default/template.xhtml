@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: sergeyy
+  Date: 12/13/16
+  Time: 1:22 PM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="#{request.contextPath}/resources/assets/ico/favicon.html"/>
+
+    <title>BootListings - A Bootstrap Classifieds template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link id="switch_style" href="#{request.contextPath}/resources/css/bootstrap.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="#{request.contextPath}/resources/css/theme.css" rel="stylesheet"/>
+    <link href="#{request.contextPath}/resources/css/dropzone.css" rel="stylesheet"/>
+    <link href="../../netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/js/fancybox/jquery.fancybox8cbb.css?v=2.1.5" media="screen" />
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/js/fancybox/helpers/jquery.fancybox-buttons8cbb.css?v=2.1.5" media="screen" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/html5shiv.js"></script>
+    <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <h:outputScript name="jquery-1.10.2.min.js" library="js" target="head"/>
+    <h:outputScript name="js/bootstrap.js" library="bootstrap" target="head"/>
+    <h:outputScript name="jquery.flot.js" library="js" target="head"/>
+    <h:outputScript name="dropzone.js" library="js" target="head"/>
+    <h:outputScript name="fancybox/jquery.fancybox8cbb.js" library="js" target="head"/>
+    <h:outputScript name="fancybox/helpers/jquery.fancybox-buttons8cbb.js" library="js" target="head"/>
+    <h:outputScript name="fancybox/helpers/jquery.fancybox-media8cbb.js" library="js" target="head"/>
+    <h:outputScript name="global.js" library="js" target="head"/>
+
+
+    <!--<link href="#{request.contextPath}/resources/css/default.css" rel='stylesheet' type='text/css' media="all" />-->
+<!--
+    <link href="#{request.contextPath}/resources/css/cssLayout.css" rel='stylesheet' type='text/css' media="all"/>
+-->
+    <title>Facelets Template</title>
+</h:head>
+<h:body>
+    <ui:insert name="top"></ui:insert>
+    <ui:include src="/WEB-INF/layout/navigator.xhtml"/>
+    <ui:insert name="content">Content</ui:insert>
+    <ui:include src="/WEB-INF/layout/footer.xhtml"/>
+</h:body>
+
+</html>
