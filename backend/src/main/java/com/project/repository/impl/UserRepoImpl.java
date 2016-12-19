@@ -35,6 +35,7 @@ public class UserRepoImpl extends AbstractRepo implements UserRepo {
 
     public void updateUser(User user) {
         session().update(user);
+//        session().merge(user);
 
 
     }

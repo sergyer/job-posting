@@ -69,6 +69,7 @@ public class UserServiceImpl implements UserService {
 
     public boolean updateUser(UserDTO userDto) {
         if (userDto != null) {
+            userDto.setPassword(CommonUtils.hashPassword(userDto.getPassword()));
 
             try {
                 userRepo.updateUser(dtoMapper.map(userDto, User.class));

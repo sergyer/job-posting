@@ -35,10 +35,13 @@
                     <div class="pull-right">
 
 
-                        <a href="../../login.xhtml">Login</a>
+                        <h:link outcome="login.xhtml" value="Login" rendered="#{sessionContext.user.email==null}"/>
+                        <h:form styleClass="pull-right"><h:commandLink rendered="#{sessionContext.user.email!=null}"
+                                                                       value="Logout" action="#{logoutBean.logout}"/>
+                        </h:form> |
                         <a href="../../register.xhtml">Register</a> |
                         <a href="#">Listings</a> |
-                        <a href="#">My account</a>
+                        <h:link rendered="#{sessionContext.user.email!=null}" value="Profile"/>
                         <a href="../../announcment_create.xhtml" class="btn btn-warning post-ad-btn">Post an ad</a>
                     </div>
                 </div>

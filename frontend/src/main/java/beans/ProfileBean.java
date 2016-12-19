@@ -30,12 +30,17 @@ public class ProfileBean {
     public void init() {
         user = userService.getUserById(sessionContext.getUser().getId());
 
+
     }
 
 
     public String updateUser() {
+        if (user.getPassword().isEmpty()) {
+            user.setPassword(null);
+        }
         userService.updateUser(user);
         sessionContext.setUser(user);
+
         return null;
     }
 
