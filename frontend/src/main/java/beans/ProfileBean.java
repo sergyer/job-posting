@@ -35,9 +35,9 @@ public class ProfileBean {
 
 
     public String updateUser() {
-        if (user.getPassword().isEmpty()) {
-            user.setPassword(null);
-        }
+//        if (user.getPassword().isEmpty()) {
+//            user.setPassword(null);
+//        }
         userService.updateUser(user);
         sessionContext.setUser(user);
 
