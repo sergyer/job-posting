@@ -1,5 +1,7 @@
 package com.project.model;
 
+import com.project.utils.DeadLine;
+
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,14 +18,28 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     private String title;
-    private String description;
+    private String content;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "post_date")
     private Date postDate;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dead_line")
     private Calendar deadLine;
+
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
 
     public Long getId() {
         return id;
@@ -41,12 +57,12 @@ public class Job {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getContent() {
+        return content;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Date getPostDate() {
@@ -61,7 +77,8 @@ public class Job {
         return deadLine;
     }
 
-    public void setDeadLine(Calendar deadLine) {
+    public void setDeadLine(DeadLine deadLine) {
         this.deadLine = deadLine;
     }
+
 }
