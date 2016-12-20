@@ -1,5 +1,6 @@
 import com.project.config.AppConfig;
-import com.project.dto.UserDTO;
+import com.project.model.Job;
+import com.project.model.User;
 import com.project.repository.JobRepo;
 import com.project.repository.UserRepo;
 import com.project.service.UserService;
@@ -11,7 +12,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import java.util.GregorianCalendar;
+
 import static org.junit.Assert.*;
+
 
 /**
  * Created by sergeyy on 12/12/16.
@@ -35,30 +39,24 @@ public class TestDB {
     Mapper dtoMapper;
 
 
-  /*  @Test
-    public void souldPersistJobToDb() {
-        Job javaJob = new Job();
-        javaJob.setDescription("Self-motivated person");
-        javaJob.setTitle("Java dev");
-        javaJob.setDeadLine(new GregorianCalendar(2017, 01, 10));
-
-        Job seeSharpJob = new Job();
-        seeSharpJob.setDescription("Ambitious");
-        seeSharpJob.setTitle("C# dev");
-        seeSharpJob.setDeadLine(new GregorianCalendar(2017, 01, 15));
-
-
-        Long id1 = jobRepo.createJob(javaJob);
-        Long id2 = jobRepo.createJob(seeSharpJob);
-
-
-        assertEquals(new Long(1), id1);
-        assertEquals(new Long(2), id2);
-
-
-    }*/
-
     /*@Test
+    public void souldPersistJobToDb() {
+        Job job = new Job();
+        job.setTitle("Java Developer");
+        job.setContent("dsdsdsfdafafadadasdadasdas");
+        job.setUserId(1L);
+
+
+        assertNotNull(jobRepo.createJob(job));
+
+
+
+
+    }
+*/
+
+
+   /* @Test
     public void shouldReturnListOfJobs() {
         int start=0;
         int max = 5;
@@ -68,10 +66,11 @@ public class TestDB {
 
     }*/
 
+
     /*@Test
     public void shouldUpdateJob() {
         Job job = new Job();
-        job.setDescription("Ambitious");
+        job.setContent("Ambitious");
         job.setTitle("C# dev");
         job.setDeadLine(new GregorianCalendar(2017, 01, 25));
 
@@ -89,19 +88,21 @@ public class TestDB {
         assertTrue( jobRepo.deleteJob(1L));
     }*/
 
-/*
 
-    @Test
+   /* @Test
     public void shouldPersistToDb() {
         User user = new User();
-        user.setFirstName("Sergey");
+        user.setFirstName("Armen");
         user.setLastName("Yer");
-        user.setEmail("serg@mail.com");
+        user.setEmail("armdev@mail.com");
         user.setPassword("sdsdsdd");
 
         userRepo.createUser(user);
-    }
-*/
+    }*/
+
+
+
+
 
 /*    @Test
     public void shouldNotCreateUser() {
@@ -141,6 +142,11 @@ public class TestDB {
     }*/
 
 
+  /*  @Test
+    public void shouldGetJobList() {
+        assertNotNull(jobRepo.getJobListByUserId(1L));
+
+    }*/
 
 
 

@@ -35,7 +35,7 @@ public class UserRepoImpl extends AbstractRepo implements UserRepo {
 
     public void updateUser(User user) {
         session().update(user);
-//        session().merge(user);
+
 
 
     }
@@ -51,7 +51,6 @@ public class UserRepoImpl extends AbstractRepo implements UserRepo {
         return userFromDb;
     }
 
-    @Override
     public User loginUser(String email, String hashedPassword) {
         User userFromDB = null;
 

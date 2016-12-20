@@ -40,8 +40,8 @@
                                                                        value="Logout" action="#{logoutBean.logout}"/>
                         </h:form> |
                         <a href="../../register.xhtml">Register</a> |
-                        <a href="#">Listings</a> |
-                        <h:link rendered="#{sessionContext.user.email!=null}" value="Profile"/>
+                        <a  href="#">Listings</a> |
+                        <h:link  rendered="#{sessionContext.user.email!=null}" outcome="profile" value="Profile"/>
                         <a href="../../announcment_create.xhtml" class="btn btn-warning post-ad-btn">Post an ad</a>
                     </div>
                 </div>

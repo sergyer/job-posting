@@ -18,21 +18,22 @@ import java.util.List;
 @Transactional
 public class JobRepoImpl extends AbstractRepo implements JobRepo {
 
-    public Long createJob(Job job) {
-        Long id = 0L;
 
-        try {
-            job.setPostDate(new Date());
-            session().persist(job);
-            session().flush();
-            id = job.getId();
+    public List<Job> getJobListByUserId(Long userId) {
+        List<Job> finalList = null;
+        Query query = session().createQuery("SELECT c FROM Job c where c.userId=:userId")
+                .setParameter("userId", userId);
+        finalList = query.list();
+        return finalList;
+    }
+
+    public void createJob(Job job) {
+
+        job.setPostDate(new Date());
+        session().persist(job);
+        session().flush();
 
 
-        } catch (Exception e) {
-
-        }
-
-        return id;
     }
 
     public List<Job> getJobList(Integer start, Integer max) {
@@ -54,30 +55,16 @@ public class JobRepoImpl extends AbstractRepo implements JobRepo {
         return finalList;
     }
 
-    public boolean deleteJob(Long id) {
+    public void deleteJob(Long id) {
         Job jobToDelete = findJob(id);
-        if (jobToDelete != null) {
-            delete(jobToDelete);
-            return true;
-        }
-
-        return false;
+        delete(jobToDelete);
 
 
     }
 
-    public boolean updateJob(Long id, Job job) {
-        if (job != null) {
-            System.out.println(findJob(id).getDescription());
-            Job jobFromDb = findJob(id);
+    public void updateJob(Job job) {
+        session().update(job);
 
-            jobFromDb.setDeadLine(job.getDeadLine());
-            jobFromDb.setTitle(job.getTitle());
-            jobFromDb.setDescription(job.getDescription());
-
-            return true;
-        }
-        return false;
     }
 
 

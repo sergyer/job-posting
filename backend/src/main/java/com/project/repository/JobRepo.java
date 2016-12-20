@@ -9,17 +9,19 @@ import java.util.List;
  */
 public interface JobRepo {
 
-    Long createJob(Job job);
+    void createJob(Job job);
+
+    void deleteJob(Long id);
+
+    void updateJob(Job job);
 
     List<Job> getJobList(Integer start, Integer max);
-
-    boolean deleteJob(Long id);
-
-    boolean updateJob(Long id, Job job);
 
     Job loadJob(Long id);
 
     Job findJob(Long id);
+
+    List<Job> getJobListByUserId(Long userId);
 
 
 }
