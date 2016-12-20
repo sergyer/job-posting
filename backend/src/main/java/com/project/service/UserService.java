@@ -19,6 +19,7 @@ public interface UserService {
 
      UserDTO loginUser(String email, String password);
 
+     boolean updateUserPswd(UserDTO userDto);
 
 
 

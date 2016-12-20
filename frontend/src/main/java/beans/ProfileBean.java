@@ -28,7 +28,7 @@ public class ProfileBean {
 
     @PostConstruct
     public void init() {
-        user = userService.getUserById(sessionContext.getUser().getId());
+    user = userService.getUserById(sessionContext.getUser().getId());
 
 
     }
@@ -43,6 +43,13 @@ public class ProfileBean {
 
         return null;
     }
+
+    public String updateUserPswd() {
+        userService.updateUserPswd(user);
+        sessionContext.setUser(user);
+        return null;
+    }
+
 
 
     public void setUserService(UserService userService) {

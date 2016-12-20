@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core">
 
 
 <body>
@@ -80,6 +80,14 @@
 
                                 <p:column headerText="Deadline">
                                     <h:outputText value="#{post.deadLine}" />
+                                </p:column>
+
+                                <p:column headerText="Edit">
+                                    <h:outputLink value="#{request.contextPath}/pages/edit.jsf">
+                                        Edit
+                                        <f:param name="jobId" value="#{post.id}"/>
+                                    </h:outputLink>
+
                                 </p:column>
                             </p:dataTable>
 

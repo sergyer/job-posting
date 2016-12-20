@@ -26,6 +26,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private Mapper dtoMapper;
 
+    @Override
+    public boolean updateUserPswd(UserDTO userDto) {
+
+        if (userDto != null) {
+            userDto.setPassword(CommonUtils.hashPassword(userDto.getPassword()));
+            userRepo.updateUser(dtoMapper.map(userDto, User.class));
+
+            return true;
+        }
+
+        return false;
+
+    }
 
     public Long saveUser(UserDTO userDto) {
         Long id = null;
@@ -69,7 +82,7 @@ public class UserServiceImpl implements UserService {
 
     public boolean updateUser(UserDTO userDto) {
         if (userDto != null) {
-            userDto.setPassword(CommonUtils.hashPassword(userDto.getPassword()));
+//            userDto.setPassword(CommonUtils.hashPassword(userDto.getPassword()));
 
             try {
                 userRepo.updateUser(dtoMapper.map(userDto, User.class));
