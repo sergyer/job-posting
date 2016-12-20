@@ -24,9 +24,9 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableMBeanExport
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"com"},
-        excludeFilters = {
-        @ComponentScan.Filter(Configuration.class)})
+@ComponentScan(basePackages = {"com"}
+        /*excludeFilters = {
+        @ComponentScan.Filter(Configuration.class)}*/)
 @PropertySource(value = {"classpath:application.properties"})
 public class AppConfig {
 
