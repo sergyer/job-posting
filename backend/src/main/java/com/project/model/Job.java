@@ -22,7 +22,7 @@ public class Job {
     private Long userId;
 
     private String title;
-    private String content;
+    private String description;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "post_date")
@@ -57,12 +57,12 @@ public class Job {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getPostDate() {

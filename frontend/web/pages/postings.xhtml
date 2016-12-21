@@ -12,7 +12,7 @@
 <body>
 
 <ui:composition template="/template.xhtml">
-    <ui:define name="content">
+    <ui:define name="description">
         <hr class="topbar"/>
 
         <div class="container">
@@ -75,7 +75,7 @@
                                 </p:column>
 
                                 <p:column headerText="Content">
-                                    <h:outputText value="#{post.content}" />
+                                    <h:outputText value="#{post.description}" />
                                 </p:column>
 
                                 <p:column headerText="Deadline">

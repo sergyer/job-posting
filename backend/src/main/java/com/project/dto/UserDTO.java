@@ -1,10 +1,6 @@
 package com.project.dto;
 
-import com.project.model.Job;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by sergeyy on 12/14/16.
@@ -21,7 +17,6 @@ public class UserDTO {
     private String lastName;
     private Integer status;
     private Integer role;
-    private List<Job> jobList = new ArrayList<Job>();
     private Date registeredDate;
     private String address;
     private String displayName;
@@ -133,14 +128,6 @@ public class UserDTO {
 
     public void setRole(Integer role) {
         this.role = role;
-    }
-
-    public List<Job> getJobList() {
-        return jobList;
-    }
-
-    public void setJobList(List<Job> jobList) {
-        this.jobList = jobList;
     }
 
     public Date getRegisteredDate() {

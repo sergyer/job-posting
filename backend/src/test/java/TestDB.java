@@ -43,7 +43,7 @@ public class TestDB {
     public void souldPersistJobToDb() {
         Job job = new Job();
         job.setTitle("Java Developer");
-        job.setContent("dsdsdsfdafafadadasdadasdas");
+        job.setDescription("dsdsdsfdafafadadasdadasdas");
         job.setUserId(1L);
 
 
@@ -70,7 +70,7 @@ public class TestDB {
     /*@Test
     public void shouldUpdateJob() {
         Job job = new Job();
-        job.setContent("Ambitious");
+        job.setDescription("Ambitious");
         job.setTitle("C# dev");
         job.setDeadLine(new GregorianCalendar(2017, 01, 25));
 

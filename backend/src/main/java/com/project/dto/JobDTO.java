@@ -13,7 +13,7 @@ public class JobDTO {
     private Long id;
     private Long userId;
     private String title;
-    private String content;
+    private String description;
     private Date postDate;
     private Calendar deadLine;
 
@@ -42,12 +42,12 @@ public class JobDTO {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Date getPostDate() {
@@ -69,7 +69,6 @@ public class JobDTO {
     public void setDeadLine(Calendar deadLine) {
         this.deadLine = deadLine;
     }
-
 
 
 }

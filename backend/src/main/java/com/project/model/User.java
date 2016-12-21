@@ -4,9 +4,7 @@ import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by sergeyy on 12/14/16.
@@ -38,8 +36,6 @@ public class User {
     private Integer status;
     private Integer role;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Job> jobList = new ArrayList<Job>();
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "registered_date")
