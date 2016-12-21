@@ -38,20 +38,12 @@ public class JobRepoImpl extends AbstractRepo implements JobRepo {
 
     public List<Job> getJobList(Integer start, Integer max) {
         List<Job> finalList = null;
-        try {
-            Query query = session().createSQLQuery("SELECT * FROM jobfinder.job  WHERE id>0");
-            if (start != null) {
-                query.setFirstResult(start);
-            }
-            if (max != null) {
-                query.setMaxResults(max);
-            }
-            finalList = query.list();
 
+        Query query = session().createQuery("SELECT c FROM Job c WHERE c.id > 0");
+        query.setFirstResult(start);
+        query.setMaxResults(max);
+        finalList = query.list();
 
-        } catch (Exception e) {
-
-        }
         return finalList;
     }
 

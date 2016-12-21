@@ -12,7 +12,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
 
 <body>
@@ -102,8 +103,30 @@
             </div>
         </div>
 
-
         <div class="container">
+            <p:dataTable var="post" value="#{postingsViewBean.jobDTOList}">
+
+                <p:column headerText="Title">
+                    <h:outputText value="#{post.title}" />
+                </p:column>
+
+                <p:column headerText="Description">
+                    <h:outputText value="#{post.description}" />
+                </p:column>
+
+                <p:column headerText="Qualifications">
+                    <h:outputText value="#{post.qualifications}" />
+                </p:column>
+
+                <p:column headerText="Responsibilities">
+                    <h:outputText value="#{post.responsibilities}" />
+                </p:column>
+
+                <p:column headerText="Deadline">
+                    <h:outputText value="#{post.deadLine}" />
+                </p:column>
+
+            </p:dataTable>
 
 
             <div class="row">

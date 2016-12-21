@@ -1,22 +1,44 @@
 package com.project.dto;
 
-import com.project.utils.DeadLine;
-
-import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by sergeyy on 12/20/16.
+ * Created by sergeyy on 12/12/16.
  */
+
+
 public class JobDTO {
 
+
     private Long id;
+
     private Long userId;
+
     private String title;
     private String description;
-    private Date postDate;
-    private Calendar deadLine;
 
+    private Date postDate;
+
+    private Date deadLine;
+
+    private String qualifications;
+    private String responsibilities;
+
+    public String getQualifications() {
+        return qualifications;
+    }
+
+    public void setQualifications(String qualifications) {
+        this.qualifications = qualifications;
+    }
+
+    public String getResponsibilities() {
+        return responsibilities;
+    }
+
+    public void setResponsibilities(String responsibilities) {
+        this.responsibilities = responsibilities;
+    }
 
     public void setUserId(Long userId) {
         this.userId = userId;
@@ -58,17 +80,12 @@ public class JobDTO {
         this.postDate = postDate;
     }
 
-    public Calendar getDeadLine() {
-        int dayOfMonth = deadLine.get(Calendar.DAY_OF_MONTH);
-        int month = deadLine.get(Calendar.MONTH);
-        int year = deadLine.get(Calendar.YEAR);
-
-        return new DeadLine(year, month, dayOfMonth);
+    public Date getDeadLine() {
+        return deadLine;
     }
 
-    public void setDeadLine(Calendar deadLine) {
+    public void setDeadLine(Date deadLine) {
         this.deadLine = deadLine;
     }
-
 
 }

@@ -33,6 +33,8 @@ public class JobServiceImpl implements JobService {
 
         if (jobDTO != null) {
             Job jobToBeSaved = dtoMapper.map(jobDTO, Job.class);
+            jobRepo.createJob(jobToBeSaved);
+
             id = jobToBeSaved.getId();
         }
 
@@ -46,12 +48,34 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public boolean updateJob(JobDTO jobDTO) {
+        if (jobDTO != null) {
+            Job jobToBeUpdated=dtoMapper.map(jobDTO,Job.class);
+            jobRepo.updateJob(jobToBeUpdated);
+
+        }
+
         return false;
     }
 
     @Override
     public List<JobDTO> getJobList(Integer start, Integer max) {
-        return null;
+        List<JobDTO> finalList = null;
+
+        if (start != null && max != null) {
+            List<Job> listFromDB = jobRepo.getJobList(start, max);
+
+            finalList = new ArrayList<>();
+
+            for (Job j : listFromDB) {
+                JobDTO temp = dtoMapper.map(j, JobDTO.class);
+                finalList.add(temp);
+
+
+            }
+
+
+        }
+        return finalList;
     }
 
     @Override

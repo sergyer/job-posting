@@ -24,8 +24,8 @@
             </button>
 
             <a href="../../index.xhtml" class="navbar-brand ">
-                        <span class="logo"><strong>classified</strong><span class="handwriting">ads</span><br />
-                            <small >a minimalist theme built with bootstrap </small></span>
+                        <span class="logo"><strong>classified</strong><span class="handwriting">ads</span><br/>
+                            <small>a minimalist theme built with bootstrap </small></span>
             </a>
         </div>
         <div class="collapse navbar-collapse">
@@ -40,9 +40,9 @@
                                                                        value="Logout" action="#{logoutBean.logout}"/>
                         </h:form> |
                         <a href="../../register.xhtml">Register</a> |
-                        <a  href="#">Listings</a> |
-                        <h:link  rendered="#{sessionContext.user.email!=null}" outcome="profile" value="Profile"/>
-                        <a href="../../announcment_create.xhtml" class="btn btn-warning post-ad-btn">Post an ad</a>
+                        <h:link rendered="#{sessionContext.user.email!=null}" outcome="profile" value="Profile"/>
+                        <h:link rendered="#{sessionContext.user.email!=null}" outcome="announcementCreate"
+                                value="Post an ad" styleClass="btn btn-warning post-ad-btn"/>
                     </div>
                 </div>
 

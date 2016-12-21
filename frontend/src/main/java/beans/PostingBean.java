@@ -2,22 +2,23 @@ package beans;
 
 import com.project.dto.JobDTO;
 import com.project.service.JobService;
-import com.project.service.UserService;
 import handlers.SessionContext;
 
-import java.io.Serializable;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
-
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by sergeyy on 12/20/16.
  */
 
-@ViewScoped
+@RequestScoped
 @ManagedBean
 public class PostingBean {
 
@@ -29,11 +30,61 @@ public class PostingBean {
 
     private List<JobDTO> jobDTOList;
 
+
+    private JobDTO jobDTO;
+
+    @ManagedProperty(value = "#{param.jobId}")
+    private Long id;
+
+
+
+
     @PostConstruct
     public void init() {
+
         jobDTOList = jobService.getJobListByUserId(sessionContext.getUser().getId());
+        jobDTO = new JobDTO();
+    }
+
+
+    public String post() {
+        /*RequestContext requestContext = RequestContext.getCurrentInstance();
+
+        requestContext.update("form:display");
+        requestContext.execute("PF('dlg').show()");*/
+
+//        jobDTO.setDeadLine(date);
+        jobDTO.setUserId(sessionContext.getUser().getId());
+        jobService.saveJob(jobDTO);
+        sessionContext.setJobDTO(jobDTO);
+
+        return "postings?faces-redirect=true";
+    }
+
+    public String updatePost() {
+
+        jobService.updateJob(sessionContext.getJobDTO());
+//        sessionContext.setJobDTO(jobDTO);
+        return "postings?faces-redirect=true";
+    }
+
+
+
+    public String setJobForEditing() {
+
+
+        for (JobDTO j:jobDTOList) {
+            if (j.getId().equals(id)) {
+                sessionContext.setJobDTO(j);
+            }
+
+        }
+
+        return "editPost";
 
     }
+
+
 
     public List<JobDTO> getJobDTOList() {
         return jobDTOList;
@@ -53,5 +104,21 @@ public class PostingBean {
 
     public SessionContext getSessionContext() {
         return sessionContext;
+    }
+
+    public JobDTO getJobDTO() {
+        return jobDTO;
+    }
+
+    public void setJobDTO(JobDTO jobDTO) {
+        this.jobDTO = jobDTO;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

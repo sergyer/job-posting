@@ -1,5 +1,6 @@
 package handlers;
 
+import com.project.dto.JobDTO;
 import com.project.dto.UserDTO;
 import com.project.model.User;
 
@@ -18,11 +19,13 @@ public class SessionContext {
     private UserDTO user;
     private FacesContext context;
     private ExternalContext externalContext;
+    private JobDTO jobDTO;
 
     public SessionContext() {
         context = FacesContext.getCurrentInstance();
         externalContext = context.getExternalContext();
         user = new UserDTO();
+        jobDTO = new JobDTO();
     }
 
     public UserDTO getUser() {
@@ -33,5 +36,11 @@ public class SessionContext {
         this.user = user;
     }
 
+    public JobDTO getJobDTO() {
+        return jobDTO;
+    }
 
+    public void setJobDTO(JobDTO jobDTO) {
+        this.jobDTO = jobDTO;
+    }
 }

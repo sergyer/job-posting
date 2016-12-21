@@ -70,7 +70,9 @@
 
             <div class="col-sm-9">
 
-                <form class="form-vertical" action="#">
+                <h:form class="form-vertical" action="#">
+                    <p:growl id="msgs" showDetail="true" />
+
 
 
                     <div class="panel panel-default">
@@ -85,16 +87,28 @@
 
                                     <div class="col-sm-12">
                                         <label>Title </label>
-                                        <input type="text" class="form-control " />
+                                        <h:inputText type="text" value="#{sessionContext.jobDTO.title}" class="form-control " />
                                     </div>
                                     <div class="col-sm-12"><br />
                                         <label>Description </label>
-                                        <textarea class="form-control col-sm-8 expand" rows="6" style="width: 99%"></textarea>
+                                        <p:inputTextarea value="#{sessionContext.jobDTO.description}" style="width:100% " rows="6" cols="33" />
                                     </div>
 
                                     <div class="col-sm-12"><br />
-                                        <label>Keywords</label>
-                                        <input type="text" class="form-control " />
+                                        <label>Responsibilities</label>
+                                        <p:inputTextarea value="#{sessionContext.jobDTO.responsibilities}" style="width:100% " rows="6" cols="33" />
+                                    </div>
+
+                                    <div class="col-sm-12"><br />
+                                        <label>Required Qualifications</label>
+                                        <h:inputText value="#{sessionContext.jobDTO.qualifications}" styleClass="form-control col-sm-8 expand" rows="6" style="width: 99%"></h:inputText>
+                                    </div>
+
+                                    <div class="col-sm-12"><br />
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel for="button" value="Deadline:" />
+                                            <p:calendar id="button" value="#{sessionContext.jobDTO.deadLine}" showOn="button" />
+                                        </h:panelGrid>
                                     </div>
 
                                 </div>
@@ -108,48 +122,6 @@
                     </div>
 
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Ad information</div>
-                        <div class="panel-body">
-
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label>Region</label>
-                                        <input type="text" class="form-control "  />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label>City</label>
-                                        <input type="text" class="form-control "  />
-                                    </div>
-                                    <div class="col-sm-6"><br />
-                                        <label>Country</label>
-                                        <input type="text" class="form-control "  />
-                                    </div>
-                                    <div class="col-sm-6"><br />
-                                        <label>Post Code</label>
-                                        <input type="text" class="form-control "  />
-                                    </div>
-
-
-                                </div>
-                                <br />
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2"/>
-                                                Don't show my address details publicly
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                    </div>
 
 
                     <div class="panel panel-default">
@@ -161,26 +133,26 @@
                     </div>
 
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Your price</div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control "  placeholder="How much do you want it to be listed for?"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p>You can adjust your price anytime you like, even after your listing is published.</p>
-                                    </div>
-                                </div>
-                            </div>
+                    <!--   <div class="panel panel-default">
+                           <div class="panel-heading">Your price</div>
+                           <div class="panel-body">
+                               <div class="form-group">
+                                   <div class="row">
+                                       <div class="col-sm-6">
+                                           <input type="text" class="form-control "  placeholder="How much do you want it to be listed for?"/>
+                                       </div>
+                                       <div class="col-sm-6">
+                                           <p>You can adjust your price anytime you like, even after your listing is published.</p>
+                                       </div>
+                                   </div>
+                               </div>
 
-                        </div>
-
-
+                           </div>
 
 
-                    </div>
+
+
+                       </div>-->
 
 
                     <div class="panel panel-default">
@@ -196,7 +168,7 @@
                             <br />
                             <button type="submit" class="btn btn-default hidden-xs">Save draft</button>
                             <button type="submit" class="btn btn-default hidden-xs">Preview ad</button>
-                            <a href="account_credits.html" class="btn btn-primary pull-right"><i class="icon-ok"></i>  Publish ad</a>
+                            <h:commandButton action="#{postingBean.updatePost}"  value="Save changes" styleClass="btn btn-primary pull-right"><i class="icon-ok"></i>  </h:commandButton>
                             <br /><p class=" hidden-xs" style="text-align: right"><small>* payment options will be<br /> shown on the next screen</small></p>
                         </div>
 
@@ -206,7 +178,7 @@
                     </div>
 
 
-                </form>
+                </h:form>
             </div>
 
 

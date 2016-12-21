@@ -74,8 +74,16 @@
                                     <h:outputText value="#{post.title}" />
                                 </p:column>
 
-                                <p:column headerText="Content">
+                                <p:column headerText="Description">
                                     <h:outputText value="#{post.description}" />
+                                </p:column>
+
+                                <p:column headerText="Description">
+                                    <h:outputText value="#{post.qualifications}" />
+                                </p:column>
+
+                                <p:column headerText="Responsibilities">
+                                    <h:outputText value="#{post.responsibilities}" />
                                 </p:column>
 
                                 <p:column headerText="Deadline">
@@ -83,10 +91,12 @@
                                 </p:column>
 
                                 <p:column headerText="Edit">
-                                    <h:outputLink value="#{request.contextPath}/pages/edit.jsf">
-                                        Edit
-                                        <f:param name="jobId" value="#{post.id}"/>
-                                    </h:outputLink>
+                                    <h:form>
+                                        <h:commandLink action="#{postingBean.setJobForEditing}"  >
+                                            Edit
+                                            <f:param name="jobId" value="#{post.id}"/>
+                                        </h:commandLink>
+                                    </h:form>
 
                                 </p:column>
                             </p:dataTable>

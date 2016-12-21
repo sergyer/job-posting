@@ -30,8 +30,26 @@ public class Job {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dead_line")
-    private Calendar deadLine;
+    private Date deadLine;
 
+    private String qualifications;
+    private String responsibilities;
+
+    public String getQualifications() {
+        return qualifications;
+    }
+
+    public void setQualifications(String qualifications) {
+        this.qualifications = qualifications;
+    }
+
+    public String getResponsibilities() {
+        return responsibilities;
+    }
+
+    public void setResponsibilities(String responsibilities) {
+        this.responsibilities = responsibilities;
+    }
 
     public void setUserId(Long userId) {
         this.userId = userId;
@@ -73,11 +91,11 @@ public class Job {
         this.postDate = postDate;
     }
 
-    public Calendar getDeadLine() {
+    public Date getDeadLine() {
         return deadLine;
     }
 
-    public void setDeadLine(DeadLine deadLine) {
+    public void setDeadLine(Date deadLine) {
         this.deadLine = deadLine;
     }
 
