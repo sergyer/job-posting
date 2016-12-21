@@ -38,17 +38,13 @@
                                             <a class="active" href="account_dashboard.html">Dashboard</a>
                                         </li>
                                         <li>
-                                            <a class="active" href="account_profile.html">My profile</a>
+                                            <a class="active" href="pages/profile.xhtml">My profile</a>
                                         </li>
+
                                         <li>
-                                            <a class="active" href="account_account.html">My account</a>
+                                            <a class="active" href="pages/postings.xhtml">Manage posts</a>
                                         </li>
-                                        <li>
-                                            <a class="active" href="account_ads.html">Manage ads</a>
-                                        </li>
-                                        <li>
-                                            <a class="active" href="account_ad_create.html">Create new ad</a>
-                                        </li>
+
                                     </ul>
 
                                 </div>
@@ -76,7 +72,7 @@
 
 
                         <div class="panel panel-default">
-                            <div class="panel-heading">Ad details</div>
+                            <div class="panel-heading">Add new post</div>
                             <div class="panel-body">
 
 
@@ -125,7 +121,7 @@
 
 
                         <div class="panel panel-default">
-                            <div class="panel-heading">Add photos</div>
+                            <div class="panel-heading">Attach file</div>
                             <div class="panel-body">
                                 <div id="my-dropzone" action="http://templates.expresspixel.com/bootlistings/upload.php" class="dropzone"></div>
                                 <br /><p><small>* please note that the displayed images are cropped/resized only for display purposes</small></p>
@@ -168,7 +164,7 @@
                                 <br />
                                 <button type="submit" class="btn btn-default hidden-xs">Save draft</button>
                                 <button type="submit" class="btn btn-default hidden-xs">Preview ad</button>
-                                <h:commandButton action="#{postingBean.post}"  value="Publish ad" styleClass="btn btn-primary pull-right"><i class="icon-ok"></i>  </h:commandButton>
+                                <h:commandButton action="#{postingBean.post}"  value="Publish post" styleClass="btn btn-primary pull-right"><i class="icon-ok"></i>  </h:commandButton>
                                 <br /><p class=" hidden-xs" style="text-align: right"><small>* payment options will be<br /> shown on the next screen</small></p>
                             </div>
 

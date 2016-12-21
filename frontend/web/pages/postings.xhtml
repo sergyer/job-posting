@@ -31,16 +31,10 @@
                                                 <a class="active" href="account_dashboard.html">Dashboard</a>
                                             </li>
                                             <li>
-                                                <a class="active" href="account_profile.html">My profile</a>
+                                                <a class="active" href="profile.xhtml">My profile</a>
                                             </li>
                                             <li>
-                                                <a class="active" href="account_account.html">My account</a>
-                                            </li>
-                                            <li>
-                                                <a class="active" href="account_ads.html">Manage ads</a>
-                                            </li>
-                                            <li>
-                                                <a class="active" href="account_ad_create.html">Create new ad</a>
+                                                <a class="active" href="../announcement_%20create.xhtml">Create new post</a>
                                             </li>
                                         </ul>
 
@@ -61,7 +55,7 @@
                         <div class="panel-heading">Manage posts</div>
                         <div class="panel-body">
 
-                            <p:dataTable var="post" value="#{postingBean.jobDTOList}">
+                            <p:dataTable var="post" value="#{postingBean.jobDTOList}" tableStyle="width: auto">
                                 <p:column headerText="Id">
                                     <h:outputText value="#{post.id}" />
                                 </p:column>
@@ -78,7 +72,7 @@
                                     <h:outputText value="#{post.description}" />
                                 </p:column>
 
-                                <p:column headerText="Description">
+                                <p:column headerText="Qualifications" >
                                     <h:outputText value="#{post.qualifications}" />
                                 </p:column>
 
@@ -86,11 +80,12 @@
                                     <h:outputText value="#{post.responsibilities}" />
                                 </p:column>
 
+
                                 <p:column headerText="Deadline">
                                     <h:outputText value="#{post.deadLine}" />
                                 </p:column>
 
-                                <p:column headerText="Edit">
+                                <p:column headerText="Edit Post">
                                     <h:form>
                                         <h:commandLink action="#{postingBean.setJobForEditing}"  >
                                             Edit
