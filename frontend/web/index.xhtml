@@ -104,7 +104,7 @@
         </div>
 
         <div class="container">
-            <p:dataTable var="post" value="#{postingsViewBean.jobDTOList}">
+            <p:dataTable var="post" value="#{postingsViewBean.jobDTOList}" paginator="true" rows="3">
 
                 <p:column headerText="Title">
                     <h:outputText value="#{post.title}" />

@@ -1,9 +1,6 @@
 package com.project.model;
 
-import com.project.utils.DeadLine;
-
 import javax.persistence.*;
-import java.util.Calendar;
 import java.util.Date;
 
 /**

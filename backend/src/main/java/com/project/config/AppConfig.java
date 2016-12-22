@@ -63,7 +63,6 @@ public class AppConfig {
     }
 
 
-
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory s) {
@@ -76,8 +75,6 @@ public class AppConfig {
     public Mapper beanMapper() {
         return new DozerBeanMapper();
     }
-
-
 
 
 }

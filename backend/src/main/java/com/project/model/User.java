@@ -36,6 +36,9 @@ public class User {
     private Integer status;
     private Integer role;
 
+    @Lob
+    private byte[] image;
+
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "registered_date")
@@ -53,6 +56,7 @@ public class User {
     private String aboutYou;
 
     private Integer mobile;
+
 
     public String getDisplayName() {
         return displayName;
@@ -164,6 +168,14 @@ public class User {
 
     public void setRegisteredDate(Date registeredDate) {
         this.registeredDate = registeredDate;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     @Override

@@ -18,9 +18,8 @@ public interface JobService {
 
     List<JobDTO> getJobList(Integer start, Integer max);
 
-    Job loadJob(Long id);
 
-    Job findJob(Long id);
+    JobDTO getJob(Long id);
 
     List<JobDTO> getJobListByUserId(Long userId);
 

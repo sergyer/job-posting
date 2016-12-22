@@ -6,7 +6,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions">
 
 
 <body>
@@ -56,7 +58,7 @@
                         <div class="panel-body">
 
 
-                            <h:form class="form-horizontal">
+                            <h:form class="form-horizontal" enctype="multipart/form-data">
                                 <fieldset>
                                     <div class="form-group">
 
@@ -65,12 +67,15 @@
                                                 <label for="inputEmail1"
                                                        class="col-sm-12 control-label">Your logo</label>
                                                 <div class="col-sm-11">
-                                                    <img id="file-select" src="css/images/180x100.png" width="100%"/>
+
                                                     <br/>
 
                                                     <span class="btn btn-default btn-file">
-                                                                 Click to upload <input type="file"/>
+                                                                 Click to upload <h:inputFile type="file"  value="#{profileBean.uploadedFile}"/>
                                                                 </span>
+                                                    <br/>
+
+                                                                 <h:commandButton    value="Click to delete" action="#{profileBean.doDeleteFile}" styleClass="btn btn-default btn-file"/>
 
                                                 </div>
                                             </div>
@@ -201,6 +206,11 @@
 
                                     <br/>
                                     <h:commandButton value="Save profile" action="#{profileBean.updateUser}"
+                                                     class="btn btn-primary"/>
+
+
+                                    <br/>
+                                    <h:commandButton value="Save picture" action="#{profileBean.doUploadFile}"
                                                      class="btn btn-primary"/>
 
 

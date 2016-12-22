@@ -23,7 +23,15 @@ public class UserDTO {
     private String companyName;
     private String aboutYou;
     private Integer mobile;
+    private byte[] image;
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
     public String getAddress() {
         return address;

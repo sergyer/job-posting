@@ -8,10 +8,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,8 +33,6 @@ public class PostingBean {
     private Long id;
 
 
-
-
     @PostConstruct
     public void init() {
 
@@ -48,12 +42,7 @@ public class PostingBean {
 
 
     public String post() {
-        /*RequestContext requestContext = RequestContext.getCurrentInstance();
 
-        requestContext.update("form:display");
-        requestContext.execute("PF('dlg').show()");*/
-
-//        jobDTO.setDeadLine(date);
         jobDTO.setUserId(sessionContext.getUser().getId());
         jobService.saveJob(jobDTO);
         sessionContext.setJobDTO(jobDTO);
@@ -64,16 +53,23 @@ public class PostingBean {
     public String updatePost() {
 
         jobService.updateJob(sessionContext.getJobDTO());
-//        sessionContext.setJobDTO(jobDTO);
         return "postings?faces-redirect=true";
     }
 
+    public String deletePost() {
+        JobDTO jobToBeDeleted = sessionContext.getJobDTO();
+        if (jobService.deleteJob(jobToBeDeleted.getId())) {
+            jobDTOList.remove(jobToBeDeleted);
+            return "postings?faces-redirect=true";
+        }
+        return null;
+    }
 
 
     public String setJobForEditing() {
 
 
-        for (JobDTO j:jobDTOList) {
+        for (JobDTO j : jobDTOList) {
             if (j.getId().equals(id)) {
                 sessionContext.setJobDTO(j);
             }
@@ -83,7 +79,6 @@ public class PostingBean {
         return "editPost";
 
     }
-
 
 
     public List<JobDTO> getJobDTOList() {

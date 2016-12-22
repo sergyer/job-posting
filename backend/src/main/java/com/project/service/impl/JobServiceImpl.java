@@ -43,13 +43,23 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public boolean deleteJob(Long id) {
+        if (id != null) {
+            try {
+                jobRepo.deleteJob(id);
+                return true;
+            } catch (IllegalArgumentException e) {
+                return false;
+            }
+
+        }
+
         return false;
     }
 
     @Override
     public boolean updateJob(JobDTO jobDTO) {
         if (jobDTO != null) {
-            Job jobToBeUpdated=dtoMapper.map(jobDTO,Job.class);
+            Job jobToBeUpdated = dtoMapper.map(jobDTO, Job.class);
             jobRepo.updateJob(jobToBeUpdated);
 
         }
@@ -78,14 +88,17 @@ public class JobServiceImpl implements JobService {
         return finalList;
     }
 
-    @Override
-    public Job loadJob(Long id) {
-        return null;
-    }
 
     @Override
-    public Job findJob(Long id) {
-        return null;
+    public JobDTO getJob(Long id) {
+        JobDTO result = null;
+        if (id != null) {
+            Job jobFromDB = jobRepo.findJob(id);
+            result = dtoMapper.map(jobFromDB, JobDTO.class);
+            return result;
+        }
+
+        return result;
     }
 
     @Override

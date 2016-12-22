@@ -35,19 +35,16 @@
                                 <div class="panel-body">
                                     <ul class="nav">
                                         <li>
-                                            <a class="active" href="account_dashboard.html">Dashboard</a>
+                                            <a class="active" href="#">Dashboard</a>
                                         </li>
                                         <li>
-                                            <a class="active" href="account_profile.html">My profile</a>
+                                            <a class="active" href="profile.xhtml">My profile</a>
                                         </li>
                                         <li>
-                                            <a class="active" href="account_account.html">My account</a>
+                                            <a class="active" href="postings.xhtml">Manage ads</a>
                                         </li>
                                         <li>
-                                            <a class="active" href="account_ads.html">Manage ads</a>
-                                        </li>
-                                        <li>
-                                            <a class="active" href="account_ad_create.html">Create new ad</a>
+                                            <a class="active" href="../announcement_%20create.xhtml">Create new ad</a>
                                         </li>
                                     </ul>
 
@@ -167,7 +164,7 @@
 
                             <br />
                             <button type="submit" class="btn btn-default hidden-xs">Save draft</button>
-                            <button type="submit" class="btn btn-default hidden-xs">Preview ad</button>
+                            <h:commandButton class="btn btn-default hidden-xs" action="#{postingBean.deletePost}" value="Delete post"/>
                             <h:commandButton action="#{postingBean.updatePost}"  value="Save changes" styleClass="btn btn-primary pull-right"><i class="icon-ok"></i>  </h:commandButton>
                             <br /><p class=" hidden-xs" style="text-align: right"><small>* payment options will be<br /> shown on the next screen</small></p>
                         </div>
