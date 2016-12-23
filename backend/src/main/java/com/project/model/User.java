@@ -57,6 +57,8 @@ public class User {
 
     private Integer mobile;
 
+    private String 
+
 
     public String getDisplayName() {
         return displayName;

@@ -15,7 +15,14 @@
     <ui:define name="description">
         <hr class="topbar"/>
 
-        <div class="container">
+
+
+        <div class="container" >
+
+
+
+
+
             <div class="row">
                 <div class="col-sm-3">
 
@@ -50,59 +57,63 @@
 
                 </div>
 
+
+
+
                 <div class="col-sm-9">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Manage posts</div>
-                        <div class="panel-body">
+                        <div class="panel-heading " >Manage posts</div>
+                        <div class="panel-body" >
 
-                            <p:dataTable var="post" value="#{postingBean.jobDTOList}" tableStyle="width: auto">
-                                <p:column headerText="Id">
-                                    <h:outputText value="#{post.id}" />
-                                </p:column>
+                            <div>
+                                <p:dataTable style="text-align: left"  var="post" value="#{postingBean.jobDTOList}">
 
-                                <p:column headerText="User id">
-                                    <h:outputText value="#{post.userId}" />
-                                </p:column>
+                                    <!-- <p:column headerText="Id" >
+                                         <h:outputText value="#{post.id}"  />
+                                     </p:column>
 
-                                <p:column headerText="Title">
-                                    <h:outputText value="#{post.title}" />
-                                </p:column>
+                                     <p:column headerText="User id">
+                                         <h:outputText value="#{post.userId}" />
+                                     </p:column>-->
 
-                                <p:column headerText="Description">
-                                    <h:outputText value="#{post.description}" />
-                                </p:column>
+                                    <p:column headerText="Title" style="width: 10%">
+                                        <h:outputText value="#{post.title}" />
+                                    </p:column>
 
-                                <p:column headerText="Qualifications" >
-                                    <h:outputText value="#{post.qualifications}" />
-                                </p:column>
+                                    <p:column headerText="Description" style="width: 30%">
+                                        <h:outputText value="#{post.description}" />
+                                    </p:column>
 
-                                <p:column headerText="Responsibilities">
-                                    <h:outputText value="#{post.responsibilities}" />
-                                </p:column>
+                                    <p:column headerText="Qualifications" style="width: 30%" >
+                                        <h:outputText value="#{post.qualifications}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Responsibilities" style="width: 30%">
+                                        <h:outputText value="#{post.responsibilities}" />
+                                    </p:column>
 
 
-                                <p:column headerText="Deadline">
-                                    <h:outputText value="#{post.deadLine}" />
-                                </p:column>
+                                    <p:column headerText="Deadline" style="width: 10%">
+                                        <h:outputText value="#{post.deadLine}" />
+                                    </p:column>
 
-                                <p:column headerText="Edit Post">
-                                    <h:form>
-                                        <h:commandLink action="#{postingBean.setJobForEditing}"  >
-                                            Edit
-                                            <f:param name="jobId" value="#{post.id}"/>
-                                        </h:commandLink>
-                                    </h:form>
+                                    <p:column headerText="Edit Post" style="width: 10%;text-align: center" >
+                                        <h:form>
+                                            <h:commandLink action="#{postingBean.setJobForEditing}"  >
+                                                Edit
+                                                <f:param name="jobId" value="#{post.id}"/>
+                                            </h:commandLink>
+                                        </h:form>
 
-                                </p:column>
-                            </p:dataTable>
-
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
 
 
 
                         </div>
                     </div>
                 </div>
-
 
             </div>
 

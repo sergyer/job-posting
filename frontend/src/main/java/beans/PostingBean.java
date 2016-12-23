@@ -8,13 +8,14 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.view.ViewScoped;
 import java.util.List;
 
 /**
  * Created by sergeyy on 12/20/16.
  */
 
-@RequestScoped
+@ViewScoped
 @ManagedBean
 public class PostingBean {
 

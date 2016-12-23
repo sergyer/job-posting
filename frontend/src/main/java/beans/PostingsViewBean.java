@@ -24,7 +24,7 @@ public class PostingsViewBean {
 
     @PostConstruct
     public void init() {
-        jobDTOList = jobService.getJobList(1, 5);
+        jobDTOList = jobService.getJobList(0, 5);
     }
 
 

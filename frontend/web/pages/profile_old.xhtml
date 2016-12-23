@@ -67,25 +67,16 @@
                                                 <label for="inputEmail1"
                                                        class="col-sm-12 control-label">Your logo</label>
                                                 <div class="col-sm-11">
-                                                    <p:graphicImage  url="/PreviewImage?fileId=#{sessionContext.user.id}"
-                                                                    width="75px" height="75px"/>
+                                                     <p:graphicImage  rendered="#{sessionContext.user.image!=null}" value="#{profileBean.profileImage}"
+                                                              width="75px" height="75px"/>
                                                     <br/>
 
                                                     <span class="btn btn-default btn-file">
                                                                  Click to upload <h:inputFile type="file"  value="#{profileBean.uploadedFile}"/>
                                                                 </span>
-
                                                     <br/>
 
-                                                    <h:commandButton    value="Click to Save"  rendered="#{sessionContext.user.image==null}" action="#{profileBean.doUploadFile}" styleClass="btn btn-default btn-file"/>
-
-
-
-
-                                                    <br/>
-
-                                                                 <h:commandButton   rendered="#{sessionContext.user.image!=null}"  value="Click to delete" action="#{profileBean.doDeleteFile}" styleClass="btn btn-default btn-file"/>
-
+                                                                 <h:commandButton    value="Click to delete" action="#{profileBean.doDeleteFile}" styleClass="btn btn-default btn-file"/>
 
                                                 </div>
                                             </div>
@@ -219,7 +210,9 @@
                                                      class="btn btn-primary"/>
 
 
-
+                                    <br/>
+                                    <h:commandButton value="Save picture" action="#{profileBean.doUploadFile}"
+                                                     class="btn btn-primary"/>
 
 
                                 </fieldset>

@@ -3,7 +3,6 @@ package beans;
 import com.project.dto.UserDTO;
 import com.project.service.UserService;
 import handlers.SessionContext;
-import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 import javax.annotation.PostConstruct;
@@ -11,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.servlet.http.Part;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -34,9 +32,14 @@ public class ProfileBean {
     private Part uploadedFile;
 
 
+
+
+
+
     @PostConstruct
     public void init() {
         user = userService.getUserById(sessionContext.getUser().getId());
+
 
 
     }
@@ -51,13 +54,12 @@ public class ProfileBean {
     }*/
 
     public String updateUser() {
-      /*  if (uploadedFile != null) {
-            doUploadFile();
-        }*/
+
+
         userService.updateUser(user);
         sessionContext.setUser(user);
 
-        return null;
+        return "profile?faces-redirect=true";
     }
 
     public String updateUserPswd() {
@@ -66,11 +68,11 @@ public class ProfileBean {
         return null;
     }
 
-    public String doUploadFile() {
+    public String doUploadFile(){
+
 
         try {
             InputStream inputStream = uploadedFile.getInputStream();
-
             byte[] contentBytes = new byte[(int) uploadedFile.getSize()];
 
             inputStream.read(contentBytes);
@@ -78,17 +80,33 @@ public class ProfileBean {
             userService.updateUser(user);
             sessionContext.setUser(user);
 
+
         } catch (IOException e) {
 
+        } catch (NullPointerException e) {
+            System.out.println("empty file!!!!!!!");
+            return "profile?faces-redirect=true";
         }
 
-        return null;
+
+        return "profile?faces-redirect=true";
+
+
+
+
     }
 
-    public void doDeleteFile() {
+    public String doDeleteFile() {
         user.setImage(null);
-        updateUser();
+        userService.updateUser(user);
+        sessionContext.setUser(user);
+
+        return "profile?faces-redirect=true";
     }
+
+
+
+
 
 
     public void setUserService(UserService userService) {
