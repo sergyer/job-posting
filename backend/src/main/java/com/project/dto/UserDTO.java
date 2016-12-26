@@ -1,5 +1,7 @@
 package com.project.dto;
 
+import javax.annotation.PostConstruct;
+import java.time.*;
 import java.util.Date;
 
 /**
@@ -24,6 +26,49 @@ public class UserDTO {
     private String aboutYou;
     private Integer mobile;
     private byte[] image;
+
+    private Date lastVisitedDate;
+
+    /*for testing purposes*/
+    private String lastVisit;
+
+   /* @PostConstruct
+    public void prepareLastVisit() {
+        Instant instant = lastVisitedDate.toInstant();
+        ZonedDateTime zd = instant.atZone(ZoneId.systemDefault());
+
+        LocalDate lastVisited = zd.toLocalDate();
+        LocalDate currentDate = LocalDate.now(ZoneId.systemDefault());
+
+        Period period = Period.between(lastVisited, currentDate);
+
+        String result=period.getDays()+"ago";
+
+        if (period.getMonths() != 0 && period.getYears() != 0) {
+            result = period.getDays() + "days " + period.getMonths() + "months " +
+                    period.getYears() + "years ago";
+        }
+        this.lastVisit = result;
+        System.out.println(this.lastVisit);
+    }*/
+
+    public Date getLastVisitedDate() {
+        return lastVisitedDate;
+    }
+
+    public void setLastVisitedDate(Date lastVisitedDate) {
+        this.lastVisitedDate = lastVisitedDate;
+    }
+
+
+
+    public String getLastVisit() {
+        return lastVisit;
+    }
+
+    public void setLastVisit(String lastVisit) {
+        this.lastVisit = lastVisit;
+    }
 
     public byte[] getImage() {
         return image;

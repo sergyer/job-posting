@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import java.util.ResourceBundle;
 
 /**
  * Created by sergeyy on 12/16/16.
@@ -24,6 +25,9 @@ public class LoginBean {
     @ManagedProperty("#{sessionContext}")
     private SessionContext sessionContext;
 
+    @ManagedProperty("#{i18n}")
+    private ResourceBundle bundle;
+
 
     private String email;
     private String password;
@@ -37,8 +41,8 @@ public class LoginBean {
 
             return "profile";
         } else {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed", "Registration fail");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+            FacesMessage msg = new FacesMessage(bundle.getString("noSuchUser"),bundle.getString("noSuchUser"));
+            FacesContext.getCurrentInstance().addMessage(null,msg);
             return null;
         }
     }
@@ -74,5 +78,13 @@ public class LoginBean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public ResourceBundle getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(ResourceBundle bundle) {
+        this.bundle = bundle;
     }
 }

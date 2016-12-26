@@ -5,9 +5,29 @@
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
 
+    <lifecycle>
+        <phase-listener>
+            validators.AuthenticationPhaseListener
+        </phase-listener>
+    </lifecycle>
     <application>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>ru_RU</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>i18n</base-name>
+            <var>i18n</var>
+        </resource-bundle>
+        <message-bundle>
+            messages
+        </message-bundle>
+
+    </application>
+
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>

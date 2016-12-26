@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import java.util.ResourceBundle;
 
 /**
  * Created by sergeyy on 12/14/16.
@@ -21,6 +22,8 @@ public class UserBean {
     private UserService userService;
     private UserDTO user;
 
+    @ManagedProperty("#{i18n}")
+    private ResourceBundle bundle;
 
     private String firstName;
     private String lastName;
@@ -44,14 +47,14 @@ public class UserBean {
         Long userId = userService.saveUser(user);
         if (userId != null) {
 
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Row Moved", "Registration successfully completed ");
+            FacesMessage msg = new FacesMessage(bundle.getString("registrationSuccess"));
 
             FacesContext.getCurrentInstance().addMessage(null, msg);
 
             return "registration_success.xhtml";
 
         }
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Registration failed", "Registration fail");
+        FacesMessage msg = new FacesMessage(bundle.getString("emailIsBusy"));
         FacesContext.getCurrentInstance().addMessage(null, msg);
 
         return null;
@@ -98,5 +101,11 @@ public class UserBean {
         this.firstName = firstName;
     }
 
+    public ResourceBundle getBundle() {
+        return bundle;
+    }
 
+    public void setBundle(ResourceBundle bundle) {
+        this.bundle = bundle;
+    }
 }

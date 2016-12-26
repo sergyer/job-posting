@@ -58,6 +58,7 @@ public class UserRepoImpl extends AbstractRepo implements UserRepo {
                 .setParameter("email", email)
                 .setParameter("password", hashedPassword);
         userFromDB = (User) query.uniqueResult();
+//        userFromDB.setLastVisitedDate(new Date(System.currentTimeMillis()));
 
         return userFromDB;
     }

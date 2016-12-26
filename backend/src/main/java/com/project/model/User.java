@@ -39,6 +39,12 @@ public class User {
     @Lob
     private byte[] image;
 
+    @Column(name = "last_visited")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastVisitedDate;
+
+
+
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "registered_date")
@@ -56,8 +62,6 @@ public class User {
     private String aboutYou;
 
     private Integer mobile;
-
-    private String 
 
 
     public String getDisplayName() {
@@ -178,6 +182,14 @@ public class User {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Date getLastVisitedDate() {
+        return lastVisitedDate;
+    }
+
+    public void setLastVisitedDate(Date lastVisitedDate) {
+        this.lastVisitedDate = lastVisitedDate;
     }
 
     @Override

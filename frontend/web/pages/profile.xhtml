@@ -213,6 +213,16 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="inputEmail1" class="col-sm-2 control-label">Last Visited</label>
+                                        <div class="col-sm-10">
+                                            <h:inputText type="email" class="form-control"
+                                                         value="#{profileBean.user.lastVisit}"
+                                                         placeholder="Your mobile number"/>
+                                        </div>
+                                    </div>
+
+
 
                                     <br/>
                                     <h:commandButton value="Save profile" action="#{profileBean.updateUser}"

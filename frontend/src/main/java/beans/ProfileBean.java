@@ -12,6 +12,8 @@ import javax.faces.bean.RequestScoped;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Created by sergeyy on 12/16/16.
@@ -39,7 +41,7 @@ public class ProfileBean {
     @PostConstruct
     public void init() {
         user = userService.getUserById(sessionContext.getUser().getId());
-
+        prepareLastVisit();
 
 
     }
@@ -102,6 +104,26 @@ public class ProfileBean {
         sessionContext.setUser(user);
 
         return "profile?faces-redirect=true";
+    }
+
+
+    public void prepareLastVisit() {
+        Instant instant =user.getLastVisitedDate().toInstant();
+        ZonedDateTime zd = instant.atZone(ZoneId.systemDefault());
+
+        LocalDate lastVisited = zd.toLocalDate();
+        LocalDate currentDate = LocalDate.now(ZoneId.systemDefault());
+
+        Period period = Period.between(lastVisited, currentDate);
+
+        String result=period.getDays()+"ago";
+
+        if (period.getMonths() != 0 || period.getYears() != 0) {
+            result = period.getDays() + "days " + period.getMonths() + "months " +
+                    period.getYears() + "years ago";
+        }
+        user.setLastVisit(result);
+
     }
 
 

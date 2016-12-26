@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 /**
  * Created by sergeyy on 12/14/16.
  */
@@ -137,7 +140,9 @@ public class UserServiceImpl implements UserService {
             User userFromDB = userRepo.loginUser(email, hashedPassword);
 
             if (userFromDB != null) {
+//                userFromDB.setLastVisitedDate(new Date());
                 entity = dtoMapper.map(userFromDB, UserDTO.class);
+
                 return entity;
             }
 
