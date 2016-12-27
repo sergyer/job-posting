@@ -5,11 +5,6 @@
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
 
-    <lifecycle>
-        <phase-listener>
-            validators.AuthenticationPhaseListener
-        </phase-listener>
-    </lifecycle>
     <application>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>

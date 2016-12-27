@@ -3,7 +3,7 @@ package beans;
 import com.project.dto.UserDTO;
 import com.project.service.UserService;
 import handlers.SessionContext;
-import org.primefaces.model.StreamedContent;
+import utils.CommonUtils;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -13,7 +13,7 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.*;
-import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 /**
  * Created by sergeyy on 12/16/16.
@@ -33,27 +33,17 @@ public class ProfileBean {
 
     private Part uploadedFile;
 
-
-
-
+    private List<UserDTO> userDTOList;
 
 
     @PostConstruct
     public void init() {
         user = userService.getUserById(sessionContext.getUser().getId());
-        prepareLastVisit();
-
+      /*  prepareLastVisit();*/
+        CommonUtils.prepareLastVisitDate(user);
 
     }
 
-
-   /* public StreamedContent getProfileImage() {
-        if (sessionContext.getUser().getImage() == null) {
-            return new DefaultStreamedContent(new ByteArrayInputStream(sessionContext.getUser().getImage()));
-
-        }
-        return null;
-    }*/
 
     public String updateUser() {
 
@@ -70,7 +60,7 @@ public class ProfileBean {
         return null;
     }
 
-    public String doUploadFile(){
+    public String doUploadFile() {
 
 
         try {
@@ -94,8 +84,6 @@ public class ProfileBean {
         return "profile?faces-redirect=true";
 
 
-
-
     }
 
     public String doDeleteFile() {
@@ -107,8 +95,8 @@ public class ProfileBean {
     }
 
 
-    public void prepareLastVisit() {
-        Instant instant =user.getLastVisitedDate().toInstant();
+    /*public void prepareLastVisit() {
+        Instant instant = user.getLastVisitedDate().toInstant();
         ZonedDateTime zd = instant.atZone(ZoneId.systemDefault());
 
         LocalDate lastVisited = zd.toLocalDate();
@@ -116,7 +104,7 @@ public class ProfileBean {
 
         Period period = Period.between(lastVisited, currentDate);
 
-        String result=period.getDays()+"ago";
+        String result = period.getDays() + "ago";
 
         if (period.getMonths() != 0 || period.getYears() != 0) {
             result = period.getDays() + "days " + period.getMonths() + "months " +
@@ -124,11 +112,7 @@ public class ProfileBean {
         }
         user.setLastVisit(result);
 
-    }
-
-
-
-
+    }*/
 
 
     public void setUserService(UserService userService) {

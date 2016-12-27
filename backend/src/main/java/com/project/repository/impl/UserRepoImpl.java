@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by sergeyy on 12/13/16.
@@ -61,5 +62,19 @@ public class UserRepoImpl extends AbstractRepo implements UserRepo {
 //        userFromDB.setLastVisitedDate(new Date(System.currentTimeMillis()));
 
         return userFromDB;
+    }
+
+
+    @Override
+    public List<User> getUserList() {
+        List<User> finalList = null;
+
+        Query query = session().createQuery("SELECT u FROM User u WHERE u.id>0 ");
+        finalList = query.list();
+
+        return finalList;
+
+
+
     }
 }

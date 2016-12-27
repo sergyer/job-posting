@@ -13,7 +13,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by sergeyy on 12/14/16.
@@ -151,4 +153,36 @@ public class UserServiceImpl implements UserService {
         }
         return entity;
     }
+
+    @Override
+    public List<UserDTO> getAllUsers() {
+        List<UserDTO> finalList = new ArrayList<>();
+
+        List<User> usersListFromDB= userRepo.getUserList();
+
+
+        for (User u:usersListFromDB) {
+            UserDTO userDTO=dtoMapper.map(u,UserDTO.class);
+            finalList.add(userDTO);
+        }
+
+        return finalList;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

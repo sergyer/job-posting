@@ -2,6 +2,8 @@ package com.project.repository;
 
 import com.project.model.User;
 
+import java.util.List;
+
 /**
  * Created by sergeyy on 12/13/16.
  */
@@ -18,4 +20,6 @@ public interface UserRepo {
      User findUserByEmail(String email);
 
      User loginUser(String email, String hashedPassword);
+
+     List<User> getUserList();
 }
