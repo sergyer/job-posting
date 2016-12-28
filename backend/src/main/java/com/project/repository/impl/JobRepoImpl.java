@@ -3,6 +3,7 @@ package com.project.repository.impl;
 import com.project.model.Job;
 import com.project.repository.AbstractRepo;
 import com.project.repository.JobRepo;
+import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -92,7 +93,20 @@ public class JobRepoImpl extends AbstractRepo implements JobRepo {
 
     }
 
+    @Override
+    public List<Job> searchJob(String title) {
+        List<Job> finalList;
 
+        SQLQuery query = session().createSQLQuery("SELECT * FROM job WHERE MATCH (title) AGAINST(:title)");
+        query.setParameter("title", title);
+        query.addEntity(Job.class);
+
+        finalList =query.list();
+
+
+        return finalList;
+
+    }
 }
 
 

@@ -23,6 +23,8 @@ public interface JobRepo {
 
     List<Job> getJobListByUserId(Long userId);
 
+    List<Job> searchJob(String title);
+
 
 }
 

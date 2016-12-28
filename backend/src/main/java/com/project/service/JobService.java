@@ -23,4 +23,5 @@ public interface JobService {
 
     List<JobDTO> getJobListByUserId(Long userId);
 
+    List<JobDTO> findJobsByTitle(String title);
 }

@@ -119,4 +119,26 @@ public class JobServiceImpl implements JobService {
         }
         return finalList;
     }
+
+    @Override
+    public List<JobDTO> findJobsByTitle(String title) {
+        List<JobDTO> finalList = new ArrayList<>();
+
+        if (title != null) {
+
+            List<Job> listFromDB =jobRepo.searchJob(title);
+
+            for (Job j:listFromDB) {
+
+
+                JobDTO temp=dtoMapper.map(j,JobDTO.class);
+                finalList.add(temp);
+            }
+        }
+
+        return finalList;
+
+
+
+    }
 }
