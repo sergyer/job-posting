@@ -1,3 +1,4 @@
+/*
 import com.project.config.AppConfig;
 import com.project.model.Job;
 import com.project.model.User;
@@ -17,9 +18,11 @@ import java.util.GregorianCalendar;
 import static org.junit.Assert.*;
 
 
+*/
 /**
  * Created by sergeyy on 12/12/16.
- */
+ *//*
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppConfig.class}, loader = AnnotationConfigContextLoader.class)
@@ -39,7 +42,8 @@ public class TestDB {
     Mapper dtoMapper;
 
 
-    /*@Test
+    */
+/*@Test
     public void souldPersistJobToDb() {
         Job job = new Job();
         job.setTitle("Java Developer");
@@ -53,10 +57,12 @@ public class TestDB {
 
 
     }
-*/
+*//*
 
 
-   /* @Test
+
+   */
+/* @Test
     public void shouldReturnListOfJobs() {
         int start=0;
         int max = 5;
@@ -64,10 +70,12 @@ public class TestDB {
 
         assertNotNull(jobRepo.getJobList(start,max));
 
-    }*/
+    }*//*
 
 
-    /*@Test
+
+    */
+/*@Test
     public void shouldUpdateJob() {
         Job job = new Job();
         job.setDescription("Ambitious");
@@ -79,17 +87,21 @@ public class TestDB {
 
     }
 
-    */
+    *//*
 
-    /*@Test
+
+    */
+/*@Test
     public void shouldDeleteJob() {
 
 
         assertTrue( jobRepo.deleteJob(1L));
-    }*/
+    }*//*
 
 
-   /* @Test
+
+   */
+/* @Test
     public void shouldPersistToDb() {
         User user = new User();
         user.setFirstName("Armen");
@@ -98,12 +110,14 @@ public class TestDB {
         user.setPassword("sdsdsdd");
 
         userRepo.createUser(user);
-    }*/
+    }*//*
 
 
 
 
 
+
+*/
 /*    @Test
     public void shouldNotCreateUser() {
         UserDTO userDto = new UserDTO();
@@ -113,17 +127,21 @@ public class TestDB {
 
         assertNull(userService.saveUser(null));
 
-    }*/
+    }*//*
 
 
-  /*  @Test
+
+  */
+/*  @Test
     public void shouldNotDeleteUser() {
         assertFalse(userService.deleteUser(6565656565656565656L));
 
-    }*/
+    }*//*
 
 
-    /*@Test
+
+    */
+/*@Test
     public void shouldNotUpdateUser() {
         User user = userRepo.findUserById(2L);
         user.setLastName("Baghdasaryan");
@@ -132,23 +150,29 @@ public class TestDB {
 
         assertTrue(userService.updateUser(userDto));
 
-    }*/
+    }*//*
 
-    /*@Test
+
+    */
+/*@Test
     public void shouldNotFindUser() {
 
         assertNull(userService.getUserById(6565656L));
 
-    }*/
+    }*//*
 
 
-  /*  @Test
+
+  */
+/*  @Test
     public void shouldGetJobList() {
         assertNotNull(jobRepo.getJobListByUserId(1L));
 
-    }*/
+    }*//*
+
 
 
 
 
 }
+*/

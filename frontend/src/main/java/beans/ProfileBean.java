@@ -6,14 +6,16 @@ import handlers.SessionContext;
 import utils.CommonUtils;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.*;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created by sergeyy on 12/16/16.
@@ -35,11 +37,13 @@ public class ProfileBean {
 
     private List<UserDTO> userDTOList;
 
+    @ManagedProperty("#{i18n}")
+    private ResourceBundle bundle;
+
 
     @PostConstruct
     public void init() {
         user = userService.getUserById(sessionContext.getUser().getId());
-      /*  prepareLastVisit();*/
         CommonUtils.prepareLastVisitDate(user);
 
     }
@@ -62,15 +66,42 @@ public class ProfileBean {
 
     public String doUploadFile() {
 
+        long size = uploadedFile.getSize();
+        long maxSize = 5 * 1000000;
+        if (size > maxSize) {
+            FacesMessage msg = new FacesMessage(bundle.getString("fileIsTooBig"));
+            FacesContext.getCurrentInstance().addMessage(null,msg);
+
+            return null;
+        }
 
         try {
-            InputStream inputStream = uploadedFile.getInputStream();
-            byte[] contentBytes = new byte[(int) uploadedFile.getSize()];
 
-            inputStream.read(contentBytes);
-            user.setImage(contentBytes);
-            userService.updateUser(user);
-            sessionContext.setUser(user);
+
+            String content = uploadedFile.getContentType();
+
+
+            if (!content.equalsIgnoreCase("image/jpeg") && !content.equalsIgnoreCase("image/pjpeg")
+                    && !content.equalsIgnoreCase("image/jpg") && !content.equalsIgnoreCase("image/gif")
+                    && !content.equalsIgnoreCase("image/x-png") && !content.equalsIgnoreCase("image/png")) {
+                try {
+                    FacesMessage msg = new FacesMessage(bundle.getString("wrongFileFormat"));
+                    FacesContext.getCurrentInstance().addMessage(null,msg);
+                    return null;
+                } catch (Exception e) {
+                }
+            } else {
+
+                InputStream inputStream = uploadedFile.getInputStream();
+                byte[] contentBytes = new byte[(int) uploadedFile.getSize()];
+
+                inputStream.read(contentBytes);
+                user.setImage(contentBytes);
+                userService.updateUser(user);
+                sessionContext.setUser(user);
+            }
+
+
 
 
         } catch (IOException e) {
@@ -137,5 +168,13 @@ public class ProfileBean {
 
     public void setUploadedFile(Part uploadedFile) {
         this.uploadedFile = uploadedFile;
+    }
+
+    public ResourceBundle getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(ResourceBundle bundle) {
+        this.bundle = bundle;
     }
 }

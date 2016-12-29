@@ -6,9 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:o="http://omnifaces.org/ui"
-      xmlns:of="http://omnifaces.org/functions">
+>
 
 
 <body>
@@ -36,7 +34,8 @@
                                                 <a class="active" href="../pages/postings.xhtml">Manage posts</a>
                                             </li>
                                             <li>
-                                                <a class="active" href="../announcement_%20create.xhtml">Create new post</a>
+                                                <a class="active"
+                                                   href="../announcement_%20create.xhtml">Create new post</a>
                                             </li>
                                         </ul>
 
@@ -67,24 +66,29 @@
                                                 <label for="inputEmail1"
                                                        class="col-sm-12 control-label">Your logo</label>
                                                 <div class="col-sm-11">
-                                                    <p:graphicImage  url="/PreviewImage?fileId=#{sessionContext.user.id}"
+                                                    <p:graphicImage url="/PreviewImage?fileId=#{sessionContext.user.id}"
                                                                     width="75px" height="75px"/>
                                                     <br/>
 
                                                     <span class="btn btn-default btn-file">
-                                                                 Click to upload <h:inputFile type="file"  value="#{profileBean.uploadedFile}"/>
+                                                                 Click to upload <h:inputFile type="file"
+                                                                                              value="#{profileBean.uploadedFile}"/>
                                                                 </span>
 
                                                     <br/>
 
-                                                    <h:commandButton    value="Click to Save"  rendered="#{sessionContext.user.image==null}" action="#{profileBean.doUploadFile}" styleClass="btn btn-default btn-file"/>
-
-
+                                                    <h:commandButton value="Click to Save"
+                                                                     rendered="#{sessionContext.user.image==null}"
+                                                                     action="#{profileBean.doUploadFile}"
+                                                                     styleClass="btn btn-default btn-file"/>
 
 
                                                     <br/>
 
-                                                                 <h:commandButton   rendered="#{sessionContext.user.image!=null}"  value="Click to delete" action="#{profileBean.doDeleteFile}" styleClass="btn btn-default btn-file"/>
+                                                    <h:commandButton rendered="#{sessionContext.user.image!=null}"
+                                                                     value="Click to delete"
+                                                                     action="#{profileBean.doDeleteFile}"
+                                                                     styleClass="btn btn-default btn-file"/>
 
 
                                                 </div>
@@ -164,17 +168,11 @@
                                             </div>
 
 
-
-
                                             <div class="form-group">
-                                                <h:link outcome="changePassword" for="inputEmail1" styleClass="col-sm-4 control-label">Change password</h:link>
+                                                <h:link outcome="changePassword" for="inputEmail1"
+                                                        styleClass="col-sm-4 control-label">Change password</h:link>
 
                                             </div>
-
-
-
-
-
 
 
                                         </div>
@@ -216,20 +214,16 @@
                                     <div class="form-group">
                                         <label for="inputEmail1" class="col-sm-2 control-label">Last Visited</label>
                                         <div class="col-sm-10">
-                                            <h:inputText type="email" class="form-control"
-                                                         value="#{profileBean.user.lastVisit}"
-                                                         placeholder="Your mobile number"/>
+                                            <h:outputText type="email" class="form-control"
+                                                          value="#{profileBean.user.lastVisit}"
+                                                          placeholder="Your mobile number"/>
                                         </div>
                                     </div>
-
 
 
                                     <br/>
                                     <h:commandButton value="Save profile" action="#{profileBean.updateUser}"
                                                      class="btn btn-primary"/>
-
-
-
 
 
                                 </fieldset>

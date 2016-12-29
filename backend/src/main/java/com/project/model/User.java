@@ -1,5 +1,6 @@
 package com.project.model;
 
+import org.hibernate.annotations.Fetch;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -37,6 +38,7 @@ public class User {
     private Integer role;
 
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     private byte[] image;
 
     @Column(name = "last_visited")

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: sergeyy
+  Date: 12/14/16
+  Time: 10:18 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+<body>
+
+
+<ui:composition template="contracts/default/template.xhtml">
+
+    <ui:define name="description">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <br/>
+
+
+
+                    <p:growl/>
+
+                    <br/><br/>
+
+
+                    <br/>
+                    <br/>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <p:gmap center="40.201013, 44.475145" zoom="15" type="HYBRID" style="width:100%;height:400px" />
+
+
+
+
+        </div>
+
+
+
+
+
+    </ui:define>
+</ui:composition>
+</body>
+</html>

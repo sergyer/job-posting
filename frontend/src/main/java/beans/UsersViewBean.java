@@ -28,7 +28,8 @@ public class UsersViewBean {
     @PostConstruct
     public void init() {
         userDTOList = userService.getAllUsers();
-//
+
+        System.out.println("sdasdas");
         for (UserDTO u:userDTOList) {
             CommonUtils.prepareLastVisitDate(u);
         }

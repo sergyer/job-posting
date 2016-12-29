@@ -1,8 +1,9 @@
 package utils;
 
 import com.project.dto.UserDTO;
+import org.ocpsoft.prettytime.PrettyTime;
 
-import java.time.*;
+import java.util.Date;
 
 /**
  * Created by sergeyy on 12/27/16.
@@ -12,7 +13,7 @@ public class CommonUtils {
 
 
     public static void prepareLastVisitDate(UserDTO user) {
-        Instant instant = user.getLastVisitedDate().toInstant();
+        /*Instant instant = user.getLastVisitedDate().toInstant();
         ZonedDateTime zd = instant.atZone(ZoneId.systemDefault());
 
         LocalDate lastVisited = zd.toLocalDate();
@@ -26,7 +27,13 @@ public class CommonUtils {
             result = period.getDays() + "days " + period.getMonths() + "months " +
                     period.getYears() + "years ago";
         }
-        user.setLastVisit(result);
+        user.setLastVisit(result);*/
+
+        Date date= user.getLastVisitedDate();
+        PrettyTime p = new PrettyTime();
+        String lastVisit = p.format(date);
+
+        user.setLastVisit(lastVisit);
 
     }
 }
